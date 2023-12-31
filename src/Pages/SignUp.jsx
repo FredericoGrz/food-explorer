@@ -7,7 +7,7 @@ function SignIn() {
     <div className="min-w-full min-h-screen bg-dark-400 pt-36 px-12 lg:px-28">
       <div
         id="content"
-        className="flex flex-col lg:flex-row lg:justify-between"
+        className="flex flex-col lg:flex-row lg:justify-between xl:justify-around"
       >
         <div
           id="logo"
