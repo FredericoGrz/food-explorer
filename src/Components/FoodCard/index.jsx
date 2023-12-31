@@ -11,9 +11,9 @@ export function FoodCard({ img, nome, descricao, preco }) {
         alt={`imagem de um(a) ${nome}`}
         className="w-24 lg:w-44 h-24 lg:h-44 "
       />
-      <p className="text-white font-semibold lg:text-2xl ">{nome}</p>
+      <p className="text-white font-semibold lg:text-xl xl:text-2xl">{nome}</p>
 
-      <p className="hidden lg:line-clamp-2 h-9 text-xs text-light-400 text-center">
+      <p className="hidden lg:line-clamp-1 lg:h-5 xl:line-clamp-2 xl:h-9 text-xs text-light-400 text-center">
         {descricao}
       </p>
 
