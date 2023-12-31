@@ -4,12 +4,12 @@ import Proptypes from "prop-types";
 
 export function FoodCard({ img, nome, descricao, preco }) {
   return (
-    <div className="w-52 lg:w-72 h-72 lg:h-[440px] p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col gap-3 justify-center items-center ">
+    <div className="min-w-[208px] lg:min-w-[288px] h-72 lg:h-[440px] p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col gap-3 justify-center items-center">
       <FaRegHeart className="text-white text-3xl absolute top-4 right-4 cursor-pointer" />
       <img
         src={img}
         alt={`imagem de um(a) ${nome}`}
-        className="w-24 lg:w-44 h-24 lg:h-44 "
+        className="w-24 lg:w-44 h-24 lg:h-44"
       />
       <p className="text-white font-semibold lg:text-xl xl:text-2xl">{nome}</p>
 
