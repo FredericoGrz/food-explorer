@@ -2,6 +2,7 @@ import { Header } from "../Components/Header";
 import fruits from "../assets/fruits.svg";
 import salada from "../assets/salada-ravanello.svg";
 import spaguetti from "../assets/spaguetti-gambe.svg";
+import torradas from "../assets/torradas-parma.svg";
 import { FoodCard } from "../Components/FoodCard";
 
 function Home() {
@@ -46,6 +47,12 @@ function Home() {
                 nome="Spaguetti Gambe"
                 descricao="Massa fresca com camarões e pesto"
                 preco="79,97"
+              />
+              <FoodCard
+                img={torradas}
+                nome="Torradas de Parma"
+                descricao="Presunto de parma e rúcula em um pão com fermentação natural"
+                preco="25,97"
               />
             </div>
           </div>
