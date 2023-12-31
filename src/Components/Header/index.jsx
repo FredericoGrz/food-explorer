@@ -2,6 +2,7 @@ import { MdMenu } from "react-icons/md";
 import { IoSearch, IoExitOutline } from "react-icons/io5";
 import { PiReceiptLight } from "react-icons/pi";
 import icon from "../../assets/icon.svg";
+import { Input } from "../Input";
 
 export function Header() {
   return (
@@ -22,12 +23,10 @@ export function Header() {
             </p>
           </div>
         </div>
-        <div className="hidden lg:flex py-3 pl-14 gap-3 items-center bg-dark-900 w-1/2 rounded-md">
-          <IoSearch className="text-white text-xl" />
-          <input
-            type="text"
+        <div className="hidden lg:block w-1/2">
+          <Input
+            icon={IoSearch}
             placeholder="Busque por pratos ou ingredientes"
-            className="bg-transparent w-full text-white outline-none"
           />
         </div>
         <button className="lg:hidden relative h-fit">
