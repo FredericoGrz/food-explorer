@@ -1,9 +1,8 @@
-import { FaRegHeart } from "react-icons/fa";
 import { Header } from "../Components/Header";
-import { Counter } from "../Components/Counter";
 import fruits from "../assets/fruits.svg";
 import salada from "../assets/salada-ravanello.svg";
 import spaguetti from "../assets/spaguetti-gambe.svg";
+import { FoodCard } from "../Components/FoodCard";
 
 function Home() {
   return (
@@ -36,53 +35,18 @@ function Home() {
               Refeições
             </h2>
             <div className="flex gap-4 lg:gap-7">
-              <div className="w-52 lg:w-72 h-72 lg:h-96 p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col gap-3 justify-center items-center">
-                <FaRegHeart className="text-white text-3xl absolute top-4 right-4 cursor-pointer" />
-                <img
-                  src={salada}
-                  alt="Imagem de uma salada Ravanello"
-                  className="w-24 lg:w-44 h-24 lg:h-44"
-                />
-                <p className="text-white font-semibold lg:text-2xl">
-                  Salada Ravanello
-                </p>
-                <div>
-                  <p className="hidden lg:block h-9 text-xs text-light-400 text-center line-clamp-2">
-                    Rabanetes, folhas verdes e molho agridoce salpicados com
-                    gergelim
-                  </p>
-                </div>
-                <p className="text-cake-200 text-lg lg:text-xl">R$ 49,97</p>
-                <div className="w-full flex flex-col lg:flex-row lg:mt-2 gap-4 justify-center items-center">
-                  <Counter />
-                  <button className="text-white font-semibold w-full px-6 py-2 bg-tomato-100 rounded hover:bg-tomato-200">
-                    Incluir
-                  </button>
-                </div>
-              </div>
-              <div className="w-52 lg:w-72 h-72 lg:h-96 p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col gap-3 justify-center items-center">
-                <FaRegHeart className="text-white text-3xl absolute top-4 right-4 cursor-pointer" />
-                <img
-                  src={spaguetti}
-                  alt="Imagem de um Spaguetti Gambe"
-                  className="w-24 lg:w-44 h-24 lg:h-44"
-                />
-                <p className="text-white font-semibold lg:text-2xl">
-                  Spaguetti Gambe
-                </p>
-                <div>
-                  <p className="hidden lg:block text-xs text-light-400 text-center h-9 line-clamp-2">
-                    Massa fresca com camarões e pesto
-                  </p>
-                </div>
-                <p className="text-cake-200 text-lg lg:text-xl">R$ 79,97</p>
-                <div className="w-full flex flex-col lg:flex-row lg:mt-2 gap-4 justify-center items-center">
-                  <Counter />
-                  <button className="text-white font-semibold w-full px-6 py-2 bg-tomato-100 rounded hover:bg-tomato-200">
-                    Incluir
-                  </button>
-                </div>
-              </div>
+              <FoodCard
+                img={salada}
+                nome="Salada Ravanello"
+                descricao="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                preco="49,97"
+              />
+              <FoodCard
+                img={spaguetti}
+                nome="Spaguetti Gambe"
+                descricao="Massa fresca com camarões e pesto"
+                preco="79,97"
+              />
             </div>
           </div>
         </div>
