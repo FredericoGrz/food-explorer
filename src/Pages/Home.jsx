@@ -4,6 +4,7 @@ import salada from "../assets/salada-ravanello.svg";
 import spaguetti from "../assets/spaguetti-gambe.svg";
 import torradas from "../assets/torradas-parma.svg";
 import { FoodCard } from "../Components/FoodCard";
+import { CardCarousel } from "../Components/Carousel";
 
 function Home() {
   return (
@@ -36,24 +37,44 @@ function Home() {
               Refeições
             </h2>
             <div className="flex gap-4 lg:gap-7">
-              <FoodCard
-                img={salada}
-                nome="Salada Ravanello"
-                descricao="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                preco="49,97"
-              />
-              <FoodCard
-                img={spaguetti}
-                nome="Spaguetti Gambe"
-                descricao="Massa fresca com camarões e pesto"
-                preco="79,97"
-              />
-              <FoodCard
-                img={torradas}
-                nome="Torradas de Parma"
-                descricao="Presunto de parma e rúcula em um pão com fermentação natural"
-                preco="25,97"
-              />
+              <CardCarousel>
+                <FoodCard
+                  img={salada}
+                  nome="Salada Ravanello"
+                  descricao="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
+                  preco="49,97"
+                />
+                <FoodCard
+                  img={spaguetti}
+                  nome="Spaguetti Gambe"
+                  descricao="Massa fresca com camarões e pesto"
+                  preco="79,97"
+                />
+                <FoodCard
+                  img={torradas}
+                  nome="Torradas de Parma"
+                  descricao="Presunto de parma e rúcula em um pão com fermentação natural"
+                  preco="25,97"
+                />
+                <FoodCard
+                  img={torradas}
+                  nome="Torradas de Parma"
+                  descricao="Presunto de parma e rúcula em um pão com fermentação natural"
+                  preco="25,97"
+                />
+                <FoodCard
+                  img={torradas}
+                  nome="Torradas de Parma"
+                  descricao="Presunto de parma e rúcula em um pão com fermentação natural"
+                  preco="25,97"
+                />
+                <FoodCard
+                  img={torradas}
+                  nome="Torradas de Parma"
+                  descricao="Presunto de parma e rúcula em um pão com fermentação natural"
+                  preco="25,97"
+                />
+              </CardCarousel>
             </div>
           </div>
         </div>
