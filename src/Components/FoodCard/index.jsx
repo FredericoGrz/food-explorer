@@ -18,7 +18,7 @@ export function FoodCard({ img, nome, descricao, preco }) {
       </p>
 
       <p className="text-cake-200 text-lg lg:text-xl ">{`R$ ${preco}`}</p>
-      <div className="w-full flex flex-col lg:flex-row lg:mt-2 gap-4 justify-center items-center ">
+      <div className="w-full flex flex-col lg:flex-row lg:mt-2 gap-4 justify-center items-center z-40">
         <Counter />
         <button className="text-white font-semibold w-full px-6 py-2 bg-tomato-100 rounded hover:bg-tomato-200">
           Incluir
