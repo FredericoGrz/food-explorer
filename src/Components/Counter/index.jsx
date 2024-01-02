@@ -13,7 +13,7 @@ export function Counter() {
   }
 
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 items-center">
       <button onClick={decreaseNumber}>
         <FaMinus className="text-white text-lg" />
       </button>
