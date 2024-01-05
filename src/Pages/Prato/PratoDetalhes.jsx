@@ -4,7 +4,7 @@ import { Counter } from "../../Components/Counter";
 import { Button } from "../../Components/Button";
 import { Header } from "../../Components/Header";
 
-function Prato() {
+function PratoDetalhes() {
   return (
     <div className="min-w-full min-h-screen bg-dark-400">
       <Header />
@@ -78,4 +78,4 @@ function Prato() {
   );
 }
 
-export default Prato;
+export default PratoDetalhes;
