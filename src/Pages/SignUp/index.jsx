@@ -1,6 +1,6 @@
-import icon from "../assets/icon.svg";
-import { Input } from "../Components/Input";
-import { Button } from "../Components/Button";
+import icon from "../../assets/icon.svg";
+import { Input } from "../../Components/Input";
+import { Button } from "../../Components/Button";
 
 function SignIn() {
   return (

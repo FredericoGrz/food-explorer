@@ -1,15 +1,15 @@
-import { Header } from "../Components/Header";
-import fruits from "../assets/fruits.svg";
-import salada from "../assets/salada-ravanello.svg";
-import spaguetti from "../assets/spaguetti-gambe.svg";
-import torradas from "../assets/torradas-parma.svg";
-import macarons from "../assets/macarons.svg";
-import peachy from "../assets/peachy-pastrie.svg";
-import maracuja from "../assets/maracuja.svg";
-import autunno from "../assets/autunno.svg";
-import { FoodCard } from "../Components/FoodCard";
-import { CardCarousel } from "../Components/Carousel";
-import { Footer } from "../Components/Footer";
+import { Header } from "../../Components/Header";
+import fruits from "../../assets/fruits.svg";
+import salada from "../../assets/salada-ravanello.svg";
+import spaguetti from "../../assets/spaguetti-gambe.svg";
+import torradas from "../../assets/torradas-parma.svg";
+import macarons from "../../assets/macarons.svg";
+import peachy from "../../assets/peachy-pastrie.svg";
+import maracuja from "../../assets/maracuja.svg";
+import autunno from "../../assets/autunno.svg";
+import { FoodCard } from "../../Components/FoodCard";
+import { CardCarousel } from "../../Components/Carousel";
+import { Footer } from "../../Components/Footer";
 
 function Home() {
   return (

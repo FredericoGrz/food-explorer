@@ -1,8 +1,8 @@
-import ravanello from "../assets/salada-ravanello.svg";
+import ravanello from "../../assets/salada-ravanello.svg";
 import { GrPrevious } from "react-icons/gr";
-import { Counter } from "../Components/Counter";
-import { Button } from "../Components/Button";
-import { Header } from "../Components/Header";
+import { Counter } from "../../Components/Counter";
+import { Button } from "../../Components/Button";
+import { Header } from "../../Components/Header";
 
 function Prato() {
   return (
