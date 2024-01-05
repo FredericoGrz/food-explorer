@@ -23,7 +23,7 @@ function Prato() {
             <img
               src={ravanello}
               alt="Salada Ravanello"
-              className="w-[264px] h-[264px] lg:w-96 lg:h-96"
+              className="w-[264px] h-[264px] lg:min-w-[384px] lg:min-h-[384px]"
             />
           </div>
         </div>
