@@ -6,16 +6,17 @@ export function Input({ icon: Icon, label, id, ...rest }) {
       {label && (
         <label
           htmlFor={id}
-          className="text-white"
+          className="text-light-100"
         >
           {label}
         </label>
       )}
       <div className="w-full flex items-center p-3 gap-3 bg-dark-900 rounded-md">
-        {Icon && <Icon className="text-white text-xl" />}
+        {Icon && <Icon className="text-light-100 text-xl" />}
         <input
           id={id}
-          className="bg-transparent w-full text-white outline-none"
+          name={id}
+          className="bg-transparent w-full text-light-100 outline-none placeholder:text-light-100"
           {...rest}
         />
       </div>
