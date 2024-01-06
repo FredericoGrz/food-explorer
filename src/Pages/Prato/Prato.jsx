@@ -4,6 +4,7 @@ import { Header } from "../../Components/Header";
 import { InputFile } from "../../Components/InputFile";
 import { Input } from "../../Components/Input";
 import { InputSelect } from "../../Components/Select";
+import { InputTag } from "../../Components/InputTag";
 
 function Prato() {
   return (
@@ -38,7 +39,12 @@ function Prato() {
               id="categoria"
             />
           </div>
-          <div></div>
+          <div>
+            <InputTag
+              label="Ingredientes"
+              id="ingrediente"
+            />
+          </div>
           <div></div>
         </form>
       </div>
