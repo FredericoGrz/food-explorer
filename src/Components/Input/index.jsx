@@ -6,7 +6,7 @@ export function Input({ icon: Icon, label, id, ...rest }) {
       {label && (
         <label
           htmlFor={id}
-          className="text-light-100"
+          className="text-light-400"
         >
           {label}
         </label>

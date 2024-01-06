@@ -4,7 +4,7 @@ import { MdOutlineFileUpload } from "react-icons/md";
 export function InputFile({ label, id, ...rest }) {
   return (
     <div className="flex flex-col gap-2">
-      {label && <label className="text-white">{label}</label>}
+      {label && <label className="text-light-400">{label}</label>}
       <div className="w-full flex items-center p-3 gap-3 bg-dark-900 rounded-md">
         <label
           htmlFor={id}
