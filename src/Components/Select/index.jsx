@@ -6,7 +6,7 @@ export function InputSelect({ label, id, ...rest }) {
       {label && (
         <label
           htmlFor={id}
-          className="text-light-100"
+          className="text-light-400"
         >
           {label}
         </label>
@@ -15,7 +15,7 @@ export function InputSelect({ label, id, ...rest }) {
         <select
           id={id}
           name={id}
-          className=" bg-transparent w-full text-light-100 outline-none placeholder:text-light-100"
+          className=" bg-transparent w-full text-light-400 outline-none placeholder:text-light-100"
           {...rest}
         >
           <option
