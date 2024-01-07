@@ -16,7 +16,7 @@ export function Input({ icon: Icon, label, id, ...rest }) {
         <input
           id={id}
           name={id}
-          className="bg-transparent w-full text-light-100 outline-none placeholder:text-light-100"
+          className="bg-transparent w-full text-light-100 outline-none placeholder:text-light-500"
           {...rest}
         />
       </div>
