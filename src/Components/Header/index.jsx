@@ -3,8 +3,15 @@ import { IoSearch, IoExitOutline } from "react-icons/io5";
 import { PiReceiptLight } from "react-icons/pi";
 import icon from "../../assets/icon.svg";
 import { Input } from "../Input";
+import { useAuth } from "../../hooks/auth";
 
 export function Header() {
+  const { signOut } = useAuth();
+
+  function handleSignOut() {
+    signOut();
+  }
+
   return (
     <header className="w-full h-[114px] px-12 py-6 bg-dark-600">
       <div className="flex justify-between items-center h-full">
@@ -39,7 +46,10 @@ export function Header() {
           <PiReceiptLight className="text-white text-2xl" />
           <p className="text-white text-sm">Pedidos (0)</p>
         </button>
-        <button className="hidden lg:flex">
+        <button
+          className="hidden lg:flex"
+          onClick={handleSignOut}
+        >
           <IoExitOutline className="text-white text-2xl" />
         </button>
       </div>
