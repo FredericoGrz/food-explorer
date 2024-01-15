@@ -1,8 +1,22 @@
 import icon from "../../assets/icon.svg";
 import { Input } from "../../Components/Input";
 import { Button } from "../../Components/Button";
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
 
 function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { signIn } = useAuth();
+
+  function handleSignIn() {
+    if (!email || !password)
+      return alert("Preencha todos os campos necessários");
+
+    signIn({ email, password });
+  }
+
   return (
     <div className="min-w-full min-h-screen bg-dark-400 pt-36 px-12 lg:px-28">
       <div
@@ -29,14 +43,21 @@ function SignIn() {
             id="email"
             label="Email"
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Input
             placeholder="No mínimo 6 caracteres"
             id="password"
             label="Senha"
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <Button title="Entrar" />
+          <Button
+            title="Entrar"
+            onClick={handleSignIn}
+          />
           <a
             href="#"
             className="text-white text-center text-sm"
