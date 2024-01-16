@@ -1,11 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { api } from "../services/api";
 import Proptypes from "prop-types";
+import { useAlertBox } from "./AlertBox";
 
 const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
+  const { showAlertBox } = useAlertBox();
 
   async function signIn({ email, password }) {
     try {
@@ -17,7 +19,7 @@ function AuthProvider({ children }) {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setData({ user, token });
     } catch (error) {
-      alert(error.response.data.message);
+      showAlertBox({ message: error.response.data.message, type: "warning" });
     }
   }
 

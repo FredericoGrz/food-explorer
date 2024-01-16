@@ -3,16 +3,21 @@ import { Input } from "../../Components/Input";
 import { Button } from "../../Components/Button";
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
+import { useAlertBox } from "../../hooks/AlertBox";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { showAlertBox } = useAlertBox();
 
   const { signIn } = useAuth();
 
   function handleSignIn() {
     if (!email || !password)
-      return alert("Preencha todos os campos necessários");
+      return showAlertBox({
+        message: "Preencha todos os campos necessários",
+        type: "warning",
+      });
 
     signIn({ email, password });
   }
