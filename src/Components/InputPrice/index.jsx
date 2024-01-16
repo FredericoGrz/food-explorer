@@ -1,9 +1,6 @@
 import Proptypes from "prop-types";
-import { useState } from "react";
 
-export function InputPrice({ label, id, ...rest }) {
-  const [price, setPrice] = useState("");
-
+export function InputPrice({ label, id, value, onChange, ...rest }) {
   return (
     <div className="flex flex-col gap-2">
       {label && (
@@ -15,7 +12,7 @@ export function InputPrice({ label, id, ...rest }) {
         </label>
       )}
       <div className="w-full flex items-center p-3 gap-2 bg-dark-900 rounded-md">
-        <p className={price.length > 0 ? "text-light-100" : "text-light-500"}>
+        <p className={value.length > 0 ? "text-light-100" : "text-light-500"}>
           R$
         </p>
         <input
@@ -24,8 +21,8 @@ export function InputPrice({ label, id, ...rest }) {
           className="bg-transparent w-full text-light-100 outline-none placeholder:text-light-500"
           type="number"
           placeholder="00,00"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          value={value}
+          onChange={onChange}
           {...rest}
         />
       </div>
@@ -36,4 +33,6 @@ export function InputPrice({ label, id, ...rest }) {
 InputPrice.propTypes = {
   label: Proptypes.string,
   id: Proptypes.string,
+  value: Proptypes.string,
+  onChange: Proptypes.func,
 };
