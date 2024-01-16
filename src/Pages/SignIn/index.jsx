@@ -4,6 +4,7 @@ import { Button } from "../../Components/Button";
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { useAlertBox } from "../../hooks/AlertBox";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -63,12 +64,12 @@ function SignIn() {
             title="Entrar"
             onClick={handleSignIn}
           />
-          <a
-            href="#"
+          <Link
             className="text-white text-center text-sm"
+            to="/signup"
           >
             Criar uma conta
-          </a>
+          </Link>
         </form>
       </div>
     </div>
