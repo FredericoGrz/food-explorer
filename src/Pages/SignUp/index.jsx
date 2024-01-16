@@ -1,6 +1,7 @@
 import icon from "../../assets/icon.svg";
 import { Input } from "../../Components/Input";
 import { Button } from "../../Components/Button";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   return (
@@ -43,12 +44,12 @@ function SignIn() {
             type="password"
           />
           <Button title="Criar conta" />
-          <a
-            href="#"
+          <Link
+            to="/"
             className="text-white text-center text-sm"
           >
             Já tenho uma conta
-          </a>
+          </Link>
         </form>
       </div>
     </div>
