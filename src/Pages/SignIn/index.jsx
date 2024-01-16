@@ -23,6 +23,10 @@ function SignIn() {
     signIn({ email, password });
   }
 
+  function handleKeyDown(e) {
+    if (e.key === "Enter") handleSignIn();
+  }
+
   return (
     <div className="min-w-full min-h-screen bg-dark-400 pt-36 px-12 lg:px-28">
       <div
@@ -59,6 +63,7 @@ function SignIn() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <Button
             title="Entrar"
