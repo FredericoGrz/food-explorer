@@ -1,4 +1,3 @@
-import { GrPrevious } from "react-icons/gr";
 import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
 import { InputFile } from "../../Components/InputFile";
@@ -8,6 +7,7 @@ import { InputPrice } from "../../Components/InputPrice";
 import { InputSelect } from "../../Components/Select";
 import { TextArea } from "../../Components/TextArea";
 import { Button } from "../../Components/Button";
+import { ButtonBack } from "../../Components/ButtonBack";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAlertBox } from "../../hooks/AlertBox";
@@ -84,10 +84,7 @@ function Prato() {
         className="px-8 lg:px-28 pt-2 lg:pt-10 pb-14 flex flex-col gap-8"
       >
         <div className="flex flex-col gap-6 text-light-300">
-          <button className="flex gap-1 items-center">
-            <GrPrevious className="lg:text-2xl" />
-            <p className="lg:font-bold lg:text-2xl">Voltar</p>
-          </button>
+          <ButtonBack />
           <h1 className="font-medium text-3xl">
             {isUpdate ? "Alterar Prato" : "Novo Prato"}
           </h1>
