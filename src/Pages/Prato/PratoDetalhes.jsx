@@ -1,8 +1,8 @@
 import ravanello from "../../assets/salada-ravanello.svg";
-import { GrPrevious } from "react-icons/gr";
 import { Counter } from "../../Components/Counter";
 import { Button } from "../../Components/Button";
 import { Header } from "../../Components/Header";
+import { ButtonBack } from "../../Components/ButtonBack";
 
 function PratoDetalhes() {
   return (
@@ -13,12 +13,7 @@ function PratoDetalhes() {
         id="container"
       >
         <div className="flex flex-col gap-4 lg:gap-10">
-          <button className="flex gap-2 items-center">
-            <GrPrevious className="text-white w-8 h-8" />
-            <p className="text-light-300 text-2xl font-medium lg:font-bold">
-              Voltar
-            </p>
-          </button>
+          <ButtonBack />
           <div className="self-center">
             <img
               src={ravanello}
