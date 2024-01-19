@@ -1,6 +1,6 @@
 import Proptypes from "prop-types";
 
-export function InputSelect({ label, id, options, ...rest }) {
+export function InputSelect({ label, id, options, selected, ...rest }) {
   return (
     <div className="flex flex-col gap-2">
       {label && (
@@ -17,6 +17,7 @@ export function InputSelect({ label, id, options, ...rest }) {
           name={id}
           className=" bg-transparent w-full text-light-400 outline-none placeholder:text-light-100"
           {...rest}
+          value={selected}
         >
           <option
             value="0"
@@ -45,4 +46,5 @@ InputSelect.propTypes = {
   label: Proptypes.string,
   id: Proptypes.string,
   options: Proptypes.array,
+  selected: Proptypes.number,
 };
