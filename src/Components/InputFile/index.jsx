@@ -63,9 +63,9 @@ export function InputFile({ label, id, onChange, ...rest }) {
   }, [inputImg]);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 relative group">
       {label && <label className="text-light-400">{label}</label>}
-      <div className="w-full flex items-center p-3 gap-3 bg-dark-900 rounded-md">
+      <div className="w-full flex items-center p-3 gap-3 bg-dark-900 rounded-md hover:">
         <label
           htmlFor={id}
           className="text-light-100 flex gap-2 items-center cursor-pointer"
@@ -89,6 +89,12 @@ export function InputFile({ label, id, onChange, ...rest }) {
           {...rest}
         />
       </div>
+      {isUploaded && (
+        <img
+          className="w-20 h-20 lg:w-32 lg:h-32 object-cover absolute -top-10 lg:-top-20 right-0 animate-fadeIn hidden group-hover:block"
+          src={URL.createObjectURL(inputImg)}
+        />
+      )}
     </div>
   );
 }
