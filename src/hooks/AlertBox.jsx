@@ -11,7 +11,9 @@ function AlertBoxProvider({ children }) {
   const [isVisible, setIsVisible] = useState(false);
 
   const iconMap = {
-    success: <BsFillCheckCircleFill className="text-light-300 text-xl" />,
+    success: (
+      <BsFillCheckCircleFill className="text-light-300 text-xl lg:text-2xl" />
+    ),
     warning: <ImWarning className="text-light-300 text-xl lg:text-2xl" />,
   };
 
@@ -35,7 +37,11 @@ function AlertBoxProvider({ children }) {
     <AlertBoxContext.Provider value={{ showAlertBox }}>
       {children}
       {isVisible && (
-        <div className="flex items-center p-2 rounded-xl gap-2 w-fit bg-cake-100 border-2 border-light-300 absolute z-40 top-8 right-0 left-0 mx-auto animate-fadeIn">
+        <div
+          className={`flex items-center p-2 rounded-xl gap-2 w-fit ${
+            alertType === "warning" ? "bg-tomato-400" : "bg-cake-100"
+          } border-2 border-light-300 absolute z-40 top-8 right-0 left-0 mx-auto animate-fadeIn`}
+        >
           {renderIcon()}
           {message && (
             <span className="text-light-300 font-bold lg:text-xl">
