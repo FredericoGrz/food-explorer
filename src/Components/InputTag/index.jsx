@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { BsX } from "react-icons/bs";
 
-export function InputTag({ label, id, onChange, ...rest }) {
+export function InputTag({ label, id, inputTags, onChange, ...rest }) {
   const [tag, setTag] = useState("");
   const [tags, setTags] = useState([]);
   const inputRef = useRef(null);
@@ -27,6 +27,10 @@ export function InputTag({ label, id, onChange, ...rest }) {
   useEffect(() => {
     if (onChange) onChange(tags);
   }, [tags]);
+
+  useEffect(() => {
+    if (inputTags && inputTags.length > 0) setTags(inputTags);
+  }, [inputTags]);
 
   return (
     <div className="flex flex-col gap-2">
@@ -77,5 +81,6 @@ export function InputTag({ label, id, onChange, ...rest }) {
 InputTag.propTypes = {
   label: Proptypes.string,
   id: Proptypes.string,
+  inputTags: Proptypes.array,
   onChange: Proptypes.func,
 };
