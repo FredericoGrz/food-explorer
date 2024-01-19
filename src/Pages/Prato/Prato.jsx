@@ -18,6 +18,7 @@ function Prato() {
   const isUpdate = id !== undefined;
   const navigate = useNavigate();
   const { showAlertBox } = useAlertBox();
+  const [previousImg, setPreviousImg] = useState("");
   const [imagem, setImagem] = useState("");
   const [name, setName] = useState("");
   const [categories, setCategories] = useState([]);
@@ -28,7 +29,7 @@ function Prato() {
 
   function verifyData() {
     let allRequiredDataAvailable = true;
-    if (!imagem || !name || !category || !preco)
+    if ((!imagem && !previousImg) || !name || !category || !preco)
       allRequiredDataAvailable = false;
 
     return allRequiredDataAvailable;
@@ -42,14 +43,24 @@ function Prato() {
       });
 
     try {
-      const response = await api.post("/pratos", {
-        imagem,
+      let prato = {
         name,
         description,
         category_id: category,
         ingredientes,
         preco,
-      });
+      };
+      if (imagem) prato.imagem = imagem;
+      let response;
+
+      if (id) response = await api.put(`/pratos/${id}`, prato);
+      else response = await api.post("/pratos", prato);
+
+      if (response.status === 200)
+        showAlertBox({
+          message: "Prato alterado com sucesso",
+          type: "success",
+        });
 
       if (response.status === 201)
         showAlertBox({
@@ -73,7 +84,23 @@ function Prato() {
       }
     }
 
+    async function fetchPrato() {
+      try {
+        const response = await api.get(`pratos/${id}`);
+
+        setName(response.data.name);
+        setCategory(response.data.category_id);
+        setIngredientes(response.data.ingredientes);
+        setPreco(response.data.preco.toString());
+        setDescription(response.data.description);
+        setPreviousImg(response.data.imagem);
+      } catch (error) {
+        showAlertBox({ message: error.response.data.message, type: "warning" });
+      }
+    }
+
     fetchCategoria();
+    if (id !== undefined) fetchPrato();
   }, []);
 
   return (
@@ -95,6 +122,7 @@ function Prato() {
               <InputFile
                 id="imagem"
                 label="Imagem do prato"
+                imagem={previousImg}
                 onChange={(file) => setImagem(file)}
               />
             </div>
@@ -112,6 +140,7 @@ function Prato() {
                 label="Categoria"
                 id="categoria"
                 options={categories}
+                selected={category}
                 onChange={(e) => setCategory(e.target.value)}
               />
             </div>
@@ -121,6 +150,7 @@ function Prato() {
               <InputTag
                 label="Ingredientes"
                 id="ingrediente"
+                inputTags={ingredientes}
                 onChange={(tags) => setIngredientes(tags)}
               />
             </div>
