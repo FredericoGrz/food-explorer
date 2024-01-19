@@ -74,6 +74,18 @@ function Prato() {
     }
   }
 
+  async function handleDelete() {
+    try {
+      const response = await api.delete(`/pratos/${id}`);
+
+      if (response.status === 200)
+        showAlertBox({ message: "Prato excluído com sucesso" });
+      navigate("/");
+    } catch (error) {
+      showAlertBox({ message: error.response.data.message, type: "warning" });
+    }
+  }
+
   useEffect(() => {
     async function fetchCategoria() {
       try {
@@ -96,6 +108,7 @@ function Prato() {
         setPreviousImg(response.data.imagem);
       } catch (error) {
         showAlertBox({ message: error.response.data.message, type: "warning" });
+        navigate("/");
       }
     }
 
@@ -181,6 +194,7 @@ function Prato() {
               <button
                 type="button"
                 className="w-full px-6 py-3 text-white rounded bg-dark-800"
+                onClick={handleDelete}
               >
                 Excluir Prato
               </button>
