@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
 import { api } from "../../services/api";
+import { useAlertBox } from "../../hooks/AlertBox";
 
-export function InputFile({ label, id, onChange, ...rest }) {
+export function InputFile({ label, id, imagem, onChange, ...rest }) {
+  const { showAlertBox } = useAlertBox();
+
   const [inputImg, setInputImg] = useState(null);
+  const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [fileName, setFileName] = useState("");
@@ -50,6 +54,7 @@ export function InputFile({ label, id, onChange, ...rest }) {
       try {
         const response = await api.post("/upload", formData);
 
+        setImage(null);
         setIsLoading(false);
         setIsUploaded(true);
         if (onChange) onChange(response.data.file);
@@ -61,6 +66,31 @@ export function InputFile({ label, id, onChange, ...rest }) {
     }
     if (inputImg !== null) uploadImg();
   }, [inputImg]);
+
+  useEffect(() => {
+    async function fetchImage() {
+      try {
+        const response = await api.get(`/files/${imagem}`, {
+          responseType: "arraybuffer",
+        });
+        const imgFormat = imagem.split(".")[1];
+
+        const blob = new Blob([response.data], { type: `image/${imgFormat}` });
+
+        setImage(URL.createObjectURL(blob));
+        setFileName("Imagem carregada");
+        setIsUploaded(true);
+      } catch (error) {
+        showAlertBox({
+          message: "Nao foi possível carregar a imagem",
+          type: "warning",
+        });
+      }
+    }
+    if (imagem) {
+      fetchImage();
+    }
+  }, [imagem]);
 
   return (
     <div className="flex flex-col gap-2 relative group">
@@ -92,7 +122,7 @@ export function InputFile({ label, id, onChange, ...rest }) {
       {isUploaded && (
         <img
           className="w-20 h-20 lg:w-32 lg:h-32 object-cover absolute -top-10 lg:-top-20 right-0 animate-fadeIn hidden group-hover:block"
-          src={URL.createObjectURL(inputImg)}
+          src={image !== null ? image : URL.createObjectURL(inputImg)}
         />
       )}
     </div>
@@ -103,4 +133,5 @@ InputFile.propTypes = {
   label: Proptypes.string,
   id: Proptypes.string,
   onChange: Proptypes.func,
+  imagem: Proptypes.string,
 };
