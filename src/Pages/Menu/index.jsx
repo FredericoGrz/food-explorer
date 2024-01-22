@@ -8,6 +8,11 @@ function Menu() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const isAdmin = Boolean(user.isAdmin);
+
+  function handleSignOut() {
+    signOut();
+    navigate("/");
+  }
   return (
     <div className="min-w-full min-h-screen bg-dark-1000 flex flex-col  ">
       <header className="h-24 bg-dark-700 w-full pl-6">
@@ -36,7 +41,7 @@ function Menu() {
             </Link>
           )}
           <button
-            onClick={signOut}
+            onClick={handleSignOut}
             className="text-light-300 w-fit text-2xl"
           >
             Sair
