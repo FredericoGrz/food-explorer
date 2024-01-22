@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAlertBox } from "../../hooks/AlertBox";
 import { api } from "../../services/api";
 
-export function Image({ imgFile, imgUrl }) {
+export function Image({ imgFile, imgUrl, ...rest }) {
   const { showAlertBox } = useAlertBox();
   const [img, setImg] = useState({});
   useEffect(() => {
@@ -12,7 +12,6 @@ export function Image({ imgFile, imgUrl }) {
         const response = await api.get(`/files/${imgUrl}`, {
           responseType: "arraybuffer",
         });
-        console.log(response);
         const imgFormat = imgUrl.split(".")[1];
         const blob = new Blob([response.data], {
           type: `image/${imgFormat}`,
@@ -23,13 +22,13 @@ export function Image({ imgFile, imgUrl }) {
         console.log(error);
       }
     }
-    if (!imgFile) fetchImage();
+    if (!imgFile && imgUrl) fetchImage();
   }, []);
   return (
     <img
       src={imgFile || img}
-      alt=""
       className="w-full h-full object-cover"
+      {...rest}
     />
   );
 }
