@@ -40,7 +40,7 @@ function AlertBoxProvider({ children }) {
         <div
           className={`flex items-center p-2 rounded-xl gap-2 w-fit ${
             alertType === "warning" ? "bg-tomato-400" : "bg-cake-100"
-          } border-2 border-light-300 absolute z-40 top-8 right-0 left-0 mx-auto animate-fadeIn`}
+          } border-2 border-light-300 absolute z-40 top-8 right-0 left-0 mx-auto animate-fadeInOut`}
         >
           {renderIcon()}
           {message && (
