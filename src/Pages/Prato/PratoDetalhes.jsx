@@ -78,7 +78,7 @@ function PratoDetalhes() {
           </div>
           <div
             id="actions"
-            className="flex gap-4 mt-12"
+            className="flex gap-4 mt-12 justify-center"
           >
             <Counter />
             <div className="max-w-[200px]">
