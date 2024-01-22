@@ -4,18 +4,31 @@ import { Counter } from "../Counter";
 import { Image } from "../Image";
 import { useAuth } from "../../hooks/auth";
 import Proptypes from "prop-types";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function FoodCard({ id, img, nome, descricao, preco }) {
   const { user } = useAuth();
   const isAdmin = user.isAdmin;
+  const navigate = useNavigate();
+
+  function handleCardClick() {
+    navigate(`/pratodetalhes/${id}`);
+  }
+
+  function handleEditClick(e) {
+    e.stopPropagation();
+    navigate(`/prato/${id}`);
+  }
 
   return (
-    <div className="min-w-[208px] lg:min-w-[288px] h-72 lg:h-[440px] p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col gap-3 justify-center items-center">
+    <button
+      onClick={handleCardClick}
+      className="min-w-[208px] lg:min-w-[288px] h-72 lg:h-[440px] p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col gap-3 justify-center items-center"
+    >
       {isAdmin ? (
-        <Link to={`/prato/${id}`}>
+        <button onClick={handleEditClick}>
           <MdModeEdit className="text-white text-3xl absolute top-4 right-4 cursor-pointer z-30 hover:scale-150 transition-transform" />
-        </Link>
+        </button>
       ) : (
         <FaRegHeart className="text-white text-3xl absolute top-4 right-4 cursor-pointer z-30 hover:scale-150 transition-transform" />
       )}
@@ -38,7 +51,7 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
           </button>
         </div>
       )}
-    </div>
+    </button>
   );
 }
 
