@@ -10,12 +10,15 @@ import { api } from "../../services/api";
 function Home() {
   const { showAlertBox } = useAlertBox();
   const [categories, setCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function fetchCategories() {
       try {
         let response = await api.get("categories?includePratos=true");
         setCategories(response.data);
+        setFilteredCategories(response.data);
       } catch (error) {
         showAlertBox({
           message: "Nao foi possível carregar a pagina",
@@ -28,9 +31,23 @@ function Home() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    if (search !== "") {
+      const categoriesFiltered = categories.map((category) => ({
+        ...category,
+        pratos: category.pratos.filter((prato) =>
+          prato.name.toLowerCase().includes(search.toLowerCase())
+        ),
+      }));
+      setFilteredCategories(categoriesFiltered);
+    } else {
+      setFilteredCategories(categories);
+    }
+  }, [search, categories]);
+
   return (
     <div className="min-w-full min-h-screen bg-dark-400">
-      <Header />
+      <Header onSearchChange={(value) => setSearch(value)} />
       <div className="py-11 pl-8 pr-4 lg:py-24 lg:px-32 flex flex-col gap-16">
         <div
           id="banner"
@@ -53,8 +70,8 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col w-full gap-6 lg:gap-14">
-          {categories &&
-            categories.map((category, index) => (
+          {filteredCategories &&
+            filteredCategories.map((category, index) => (
               <div
                 key={String(index)}
                 className="flex flex-col w-full gap-6"

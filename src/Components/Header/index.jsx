@@ -1,3 +1,4 @@
+import Proptypes from "prop-types";
 import { MdMenu } from "react-icons/md";
 import { IoSearch, IoExitOutline } from "react-icons/io5";
 import { PiReceiptLight } from "react-icons/pi";
@@ -6,7 +7,7 @@ import { Input } from "../Input";
 import { useAuth } from "../../hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 
-export function Header() {
+export function Header({ onSearchChange }) {
   const navigate = useNavigate();
   const { signOut, user } = useAuth();
   const isAdmin = Boolean(user.isAdmin);
@@ -47,6 +48,7 @@ export function Header() {
           <Input
             icon={IoSearch}
             placeholder="Busque por pratos ou ingredientes"
+            onChange={(e) => onSearchChange(e.target.value)}
           />
         </div>
         {!isAdmin && (
@@ -81,3 +83,7 @@ export function Header() {
     </header>
   );
 }
+
+Header.propTypes = {
+  onSearchChange: Proptypes.func,
+};
