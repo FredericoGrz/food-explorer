@@ -1,17 +1,33 @@
 import { Header } from "../../Components/Header";
 import fruits from "../../assets/fruits.svg";
-import salada from "../../assets/salada-ravanello.svg";
-import spaguetti from "../../assets/spaguetti-gambe.svg";
-import torradas from "../../assets/torradas-parma.svg";
-import macarons from "../../assets/macarons.svg";
-import peachy from "../../assets/peachy-pastrie.svg";
-import maracuja from "../../assets/maracuja.svg";
-import autunno from "../../assets/autunno.svg";
 import { FoodCard } from "../../Components/FoodCard";
 import { CardCarousel } from "../../Components/Carousel";
 import { Footer } from "../../Components/Footer";
+import { useEffect, useState } from "react";
+import { useAlertBox } from "../../hooks/AlertBox";
+import { api } from "../../services/api";
 
 function Home() {
+  const { showAlertBox } = useAlertBox();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        let response = await api.get("categories?includePratos=true");
+        setCategories(response.data);
+      } catch (error) {
+        showAlertBox({
+          message: "Nao foi possível carregar a pagina",
+          type: "warning",
+        });
+        console.log(error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
+
   return (
     <div className="min-w-full min-h-screen bg-dark-400">
       <Header />
@@ -37,156 +53,30 @@ function Home() {
           </div>
         </div>
         <div className="flex flex-col w-full gap-6 lg:gap-14">
-          <div
-            id="refeicao"
-            className="flex flex-col w-full gap-6"
-          >
-            <h2 className="text-white text-lg font-semibold lg:text-2xl">
-              Refeições
-            </h2>
-            <CardCarousel>
-              <FoodCard
-                img={salada}
-                nome="Salada Ravanello"
-                descricao="Rabanetes, folhas verdes e molho agridoce salpicados com gergelim"
-                preco="49,97"
-              />
-              <FoodCard
-                img={spaguetti}
-                nome="Spaguetti Gambe"
-                descricao="Massa fresca com camarões e pesto"
-                preco="79,97"
-              />
-              <FoodCard
-                img={torradas}
-                nome="Torradas de Parma"
-                descricao="Presunto de parma e rúcula em um pão com fermentação natural"
-                preco="25,97"
-              />
-              <FoodCard
-                img={torradas}
-                nome="Torradas de Parma"
-                descricao="Presunto de parma e rúcula em um pão com fermentação natural"
-                preco="25,97"
-              />
-              <FoodCard
-                img={torradas}
-                nome="Torradas de Parma"
-                descricao="Presunto de parma e rúcula em um pão com fermentação natural"
-                preco="25,97"
-              />
-              <FoodCard
-                img={torradas}
-                nome="Torradas de Parma"
-                descricao="Presunto de parma e rúcula em um pão com fermentação natural"
-                preco="25,97"
-              />
-            </CardCarousel>
-          </div>
-          <div
-            id="sobremesas"
-            className="flex flex-col w-full gap-6"
-          >
-            <h2 className="text-white text-lg font-semibold lg:text-2xl">
-              Sobremesas
-            </h2>
-            <CardCarousel>
-              <FoodCard
-                img={peachy}
-                nome="Peachy Pastrie"
-                descricao="Delicioso folheado de pêssego com folhas de hortelã"
-                preco="32,97"
-              />
-              <FoodCard
-                img={macarons}
-                nome="Macarons"
-                descricao="Farinha de amêndoas, manteiga, claras e açúcar"
-                preco="79,97"
-              />
-              <FoodCard
-                img={peachy}
-                nome="Peachy Pastrie"
-                descricao="Delicioso folheado de pêssego com folhas de hortelã"
-                preco="32,97"
-              />
-              <FoodCard
-                img={macarons}
-                nome="Macarons"
-                descricao="Farinha de amêndoas, manteiga, claras e açúcar"
-                preco="79,97"
-              />
-              <FoodCard
-                img={peachy}
-                nome="Peachy Pastrie"
-                descricao="Delicioso folheado de pêssego com folhas de hortelã"
-                preco="32,97"
-              />
-              <FoodCard
-                img={macarons}
-                nome="Macarons"
-                descricao="Farinha de amêndoas, manteiga, claras e açúcar"
-                preco="79,97"
-              />
-            </CardCarousel>
-          </div>
-          <div
-            id="bebidas"
-            className="flex flex-col w-full gap-6"
-          >
-            <h2 className="text-white text-lg font-semibold lg:text-2xl">
-              Bebidas
-            </h2>
-            <CardCarousel>
-              <FoodCard
-                img={maracuja}
-                nome="Suco de maracujá"
-                descricao="Suco de maracujá gelado, cremoso, docinho"
-                preco="13,97"
-              />
-              <FoodCard
-                img={autunno}
-                nome="Tè d'autunno"
-                descricao="Chá de anis, canela e limão. Sinta o outono italiano"
-                preco="19,97"
-              />
-              <FoodCard
-                img={maracuja}
-                nome="Suco de maracujá"
-                descricao="Suco de maracujá gelado, cremoso, docinho"
-                preco="13,97"
-              />
-              <FoodCard
-                img={autunno}
-                nome="Tè d'autunno"
-                descricao="Chá de anis, canela e limão. Sinta o outono italiano"
-                preco="19,97"
-              />
-              <FoodCard
-                img={maracuja}
-                nome="Suco de maracujá"
-                descricao="Suco de maracujá gelado, cremoso, docinho"
-                preco="13,97"
-              />
-              <FoodCard
-                img={autunno}
-                nome="Tè d'autunno"
-                descricao="Chá de anis, canela e limão. Sinta o outono italiano"
-                preco="19,97"
-              />
-              <FoodCard
-                img={maracuja}
-                nome="Suco de maracujá"
-                descricao="Suco de maracujá gelado, cremoso, docinho"
-                preco="13,97"
-              />
-              <FoodCard
-                img={autunno}
-                nome="Tè d'autunno"
-                descricao="Chá de anis, canela e limão. Sinta o outono italiano"
-                preco="19,97"
-              />
-            </CardCarousel>
-          </div>
+          {categories &&
+            categories.map((category, index) => (
+              <div
+                key={String(index)}
+                className="flex flex-col w-full gap-6"
+              >
+                <h2 className="text-white text-lg font-semibold lg:text-2xl">
+                  {category.name}
+                </h2>
+                <CardCarousel>
+                  {category.pratos &&
+                    category.pratos.map((prato) => (
+                      <FoodCard
+                        key={String(prato.id)}
+                        id={String(prato.id)}
+                        img={prato.imagem}
+                        nome={prato.name}
+                        preco={prato.preco.toString()}
+                        descricao={prato.description}
+                      />
+                    ))}
+                </CardCarousel>
+              </div>
+            ))}
         </div>
       </div>
       <Footer />
