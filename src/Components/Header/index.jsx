@@ -10,7 +10,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 export function Header({ onSearchChange }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const inputVisivel = location.pathname === "/";
+  const isHome = location.pathname === "/";
   const { signOut, user } = useAuth();
   const isAdmin = Boolean(user.isAdmin);
 
@@ -47,7 +47,7 @@ export function Header({ onSearchChange }) {
           </div>
         </div>
         <div className="hidden lg:block w-1/2">
-          {inputVisivel && (
+          {isHome && (
             <Input
               icon={IoSearch}
               placeholder="Busque por pratos ou ingredientes"
@@ -69,7 +69,7 @@ export function Header({ onSearchChange }) {
             <p className="text-white text-sm">Pedidos (0)</p>
           </button>
         )}
-        {isAdmin && (
+        {isAdmin && isHome && (
           <Link
             to="/categoria"
             className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
@@ -77,7 +77,7 @@ export function Header({ onSearchChange }) {
             Nova Categoria
           </Link>
         )}
-        {isAdmin && (
+        {isAdmin && isHome && (
           <Link
             to="/prato"
             className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
