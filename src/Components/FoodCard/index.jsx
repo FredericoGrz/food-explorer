@@ -38,7 +38,7 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
       </div>
       <p className="text-white font-semibold lg:text-xl xl:text-2xl">{nome}</p>
 
-      <p className="hidden lg:line-clamp-1 lg:h-5 xl:line-clamp-2 xl:h-9 text-xs text-light-400 text-center">
+      <p className="hidden lg:line-clamp-1 lg:h-4 xl:line-clamp-2 xl:h-8 text-xs text-light-400 text-center">
         {descricao}
       </p>
 
