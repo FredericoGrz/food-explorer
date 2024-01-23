@@ -34,7 +34,7 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
           <MdModeEdit className="text-white text-2xl lg:text-3xl absolute top-4 right-4 cursor-pointer z-30 hover:scale-150 transition-transform" />
         </button>
       ) : (
-        <FaRegHeart className="text-white text-3xl absolute top-4 right-4 cursor-pointer z-30 hover:scale-150 transition-transform" />
+        <FaRegHeart className="text-white text-2xl lg:text-3xl absolute top-4 right-4 cursor-pointer z-30 hover:scale-150 transition-transform" />
       )}
 
       <div className="w-24 lg:w-44 h-24 lg:h-44">
