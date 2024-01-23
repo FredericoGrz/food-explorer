@@ -73,7 +73,7 @@ function PratoDetalhes() {
                 prato.ingredientes.map((ingrediente, index) => (
                   <p
                     key={String(index)}
-                    className="bg-dark-1000 rounded text-white text-sm px-2 py-1"
+                    className="bg-dark-1000 rounded text-white text-sm lg:text-base px-2 py-1"
                   >
                     {ingrediente}
                   </p>
