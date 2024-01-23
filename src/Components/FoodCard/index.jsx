@@ -11,6 +11,10 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
   const isAdmin = user.isAdmin;
   const navigate = useNavigate();
 
+  if (preco !== undefined) {
+    preco = Number(preco).toFixed(2).toString().replace(".", ",");
+  }
+
   function handleCardClick() {
     navigate(`/pratodetalhes/${id}`);
   }
