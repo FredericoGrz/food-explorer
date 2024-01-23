@@ -36,20 +36,20 @@ export function CardCarousel({ children }) {
       {overflowDetected && (
         <div className=" lg:block w-1/12 absolute left-0 z-10 h-full bg-gradient-to-r from-dark-300 via-dark-300/50 to-dark-300/5">
           <button
-            className="absolute left-5 top-1/2 z-20"
+            className="absolute left-5 top-1/2 z-20 hover:scale-125 transition-transform"
             onClick={() => handleScroll("left")}
           >
-            <GrPrevious className="text-white text-3xl hover:text-4xl" />
+            <GrPrevious className="text-white text-3xl" />
           </button>
         </div>
       )}
       {overflowDetected && (
         <div className=" lg:block w-1/12 absolute right-0 z-10 h-full bg-gradient-to-l from-dark-300 via-dark-300/50 to-dark-300/5">
           <button
-            className="absolute right-5 top-1/2 z-20"
+            className="absolute right-5 top-1/2 z-20 hover:scale-125 transition-transform"
             onClick={() => handleScroll("right")}
           >
-            <GrNext className="text-white text-3xl hover:text-4xl" />
+            <GrNext className="text-white text-3xl" />
           </button>
         </div>
       )}
