@@ -12,8 +12,10 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAlertBox } from "../../hooks/AlertBox";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 function Prato() {
+  const { user } = useAuth();
   const { id } = useParams();
   const isUpdate = id !== undefined;
   const navigate = useNavigate();
@@ -110,6 +112,11 @@ function Prato() {
         showAlertBox({ message: error.response.data.message, type: "warning" });
         navigate("/");
       }
+    }
+
+    if (!user.isAdmin) {
+      showAlertBox({ message: "Sem permissão", type: "warning" });
+      return navigate("/");
     }
 
     fetchCategoria();

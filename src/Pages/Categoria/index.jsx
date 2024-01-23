@@ -8,9 +8,13 @@ import { useAlertBox } from "../../hooks/AlertBox";
 import { Input } from "../../Components/Input";
 import { TextArea } from "../../Components/TextArea";
 import { Button } from "../../Components/Button";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 function Categoria() {
+  const { user } = useAuth();
   const { showAlertBox } = useAlertBox();
+  const navigate = useNavigate();
   const [isNewCategory, setIsNewCategory] = useState(false);
   const [updateId, setUpdateId] = useState(0);
   const [categories, setCategories] = useState([]);
@@ -98,6 +102,13 @@ function Categoria() {
   }
 
   useEffect(() => {
+    if (!user.isAdmin) {
+      showAlertBox({
+        message: "Sem permissão",
+        type: "warning",
+      });
+      return navigate("/");
+    }
     fetchCategories();
   }, []);
 
