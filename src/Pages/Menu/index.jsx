@@ -29,6 +29,14 @@ function Menu() {
         <div className="flex flex-col gap-3">
           {isAdmin && (
             <Link
+              to="/categoria"
+              className="text-light-300 text-2xl"
+            >
+              Nova Categoria
+            </Link>
+          )}
+          {isAdmin && (
+            <Link
               to="/prato"
               className="text-light-300 text-2xl"
             >

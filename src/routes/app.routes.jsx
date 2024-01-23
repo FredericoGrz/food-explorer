@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
 import Prato from "../Pages/Prato/Prato";
 import PratoDetalhes from "../Pages/Prato/PratoDetalhes";
+import Categoria from "../Pages/Categoria";
 import Menu from "../Pages/Menu";
 
 export function AppRoutes() {
@@ -27,6 +28,10 @@ export function AppRoutes() {
       <Route
         path="/pratodetalhes/:id"
         element={<PratoDetalhes />}
+      />
+      <Route
+        path="/categoria"
+        element={<Categoria />}
       />
     </Routes>
   );
