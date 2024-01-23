@@ -8,6 +8,7 @@ import { useAlertBox } from "../../hooks/AlertBox";
 import { Input } from "../../Components/Input";
 import { TextArea } from "../../Components/TextArea";
 import { Button } from "../../Components/Button";
+import { Footer } from "../../Components/Footer";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -113,7 +114,7 @@ function Categoria() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-dark-400">
+    <div className="relative min-h-screen w-full bg-dark-400">
       <Header />
       <div
         id="container"
@@ -210,6 +211,9 @@ function Categoria() {
             </div>
           </form>
         )}
+      </div>
+      <div className="absolute w-full bottom-0">
+        <Footer />
       </div>
     </div>
   );
