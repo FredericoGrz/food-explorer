@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "../../Components/Footer";
-import { IoClose, IoSearch } from "react-icons/io5";
-import { Input } from "../../Components/Input";
+import { IoClose } from "react-icons/io5";
 import { useAuth } from "../../hooks/auth";
 
 function Menu() {
@@ -27,10 +26,6 @@ function Menu() {
         </div>
       </header>
       <div className="flex-1 px-7 pt-9 flex flex-col gap-9">
-        <Input
-          icon={IoSearch}
-          placeholder="Busque por pratos ou ingredientes"
-        />
         <div className="flex flex-col gap-3">
           {isAdmin && (
             <Link
