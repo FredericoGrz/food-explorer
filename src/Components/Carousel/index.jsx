@@ -23,7 +23,7 @@ export function CardCarousel({ children }) {
   return (
     <div className="relative">
       {overflowDetected && (
-        <div className=" lg:block w-2/12 absolute left-0 z-10 h-full bg-gradient-to-r from-dark-300 via-dark-300/50 to-dark-300/5">
+        <div className=" lg:block w-1/12 absolute left-0 z-10 h-full bg-gradient-to-r from-dark-300 via-dark-300/50 to-dark-300/5">
           <button
             className="absolute left-5 top-1/2 z-20"
             onClick={() => handleScroll("left")}
@@ -33,7 +33,7 @@ export function CardCarousel({ children }) {
         </div>
       )}
       {overflowDetected && (
-        <div className=" lg:block w-2/12 absolute right-0 z-10 h-full bg-gradient-to-l from-dark-300 via-dark-300/50 to-dark-300/5">
+        <div className=" lg:block w-1/12 absolute right-0 z-10 h-full bg-gradient-to-l from-dark-300 via-dark-300/50 to-dark-300/5">
           <button
             className="absolute right-5 top-1/2 z-20"
             onClick={() => handleScroll("right")}
