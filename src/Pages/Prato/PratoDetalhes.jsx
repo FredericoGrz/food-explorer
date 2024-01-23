@@ -16,8 +16,12 @@ function PratoDetalhes() {
   useEffect(() => {
     async function fetchPrato() {
       try {
-        const response = await api.get(`pratos/${id}`);
+        let response = await api.get(`pratos/${id}`);
 
+        response.data.preco = Number(response.data.preco)
+          .toFixed(2)
+          .toString()
+          .replace(".", ",");
         setPrato(response.data);
       } catch (error) {
         console.log(error);
@@ -58,12 +62,12 @@ function PratoDetalhes() {
             <h1 className="text-light-300 font-medium text-2xl lg:text-[40px]">
               {prato.name}
             </h1>
-            <p className="text-light-300 line-clamp-2 text-center lg:text-start lg:text-2xl">
+            <p className="text-light-300 line-clamp-6 text-center lg:text-start lg:text-2xl">
               {prato.description}
             </p>
             <div
               id="tags"
-              className="flex gap-6 flex-wrap lg:gap-3"
+              className="flex gap-6 flex-wrap lg:gap-3 justify-center"
             >
               {prato.ingredientes &&
                 prato.ingredientes.map((ingrediente, index) => (
@@ -78,7 +82,7 @@ function PratoDetalhes() {
           </div>
           <div
             id="actions"
-            className="flex gap-4 mt-12 justify-center"
+            className="flex gap-4 mt-12 justify-center lg:justify-start"
           >
             <Counter />
             <div className="max-w-[200px]">
