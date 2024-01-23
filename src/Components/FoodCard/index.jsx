@@ -23,7 +23,7 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
   return (
     <button
       onClick={handleCardClick}
-      className="w-[208px] min-w-[208px] lg:w-[288px] lg:min-w-[288px] h-72 lg:h-[440px] p-6 bg-dark-200 border border-white rounded-lg relative flex flex-col flex-nowrap gap-3 justify-center items-center"
+      className="w-[208px] min-w-[208px] lg:w-[288px] lg:min-w-[288px] h-72 lg:h-[440px] p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col flex-nowrap gap-3 justify-center items-center"
     >
       {isAdmin ? (
         <button onClick={handleEditClick}>
