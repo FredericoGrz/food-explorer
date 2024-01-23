@@ -76,7 +76,7 @@ function Home() {
                 key={String(index)}
                 className="flex flex-col w-full gap-6"
               >
-                <h2 className="text-white text-lg font-semibold lg:text-2xl">
+                <h2 className="text-white text-2xl font-semibold lg:text-3xl">
                   {category.name}
                 </h2>
                 <CardCarousel>
