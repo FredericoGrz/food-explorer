@@ -5,10 +5,12 @@ import { PiReceiptLight } from "react-icons/pi";
 import icon from "../../assets/icon.svg";
 import { Input } from "../Input";
 import { useAuth } from "../../hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export function Header({ onSearchChange }) {
+  const location = useLocation();
   const navigate = useNavigate();
+  const inputVisivel = location.pathname === "/";
   const { signOut, user } = useAuth();
   const isAdmin = Boolean(user.isAdmin);
 
@@ -45,11 +47,13 @@ export function Header({ onSearchChange }) {
           </div>
         </div>
         <div className="hidden lg:block w-1/2">
-          <Input
-            icon={IoSearch}
-            placeholder="Busque por pratos ou ingredientes"
-            onChange={(e) => onSearchChange(e.target.value)}
-          />
+          {inputVisivel && (
+            <Input
+              icon={IoSearch}
+              placeholder="Busque por pratos ou ingredientes"
+              onChange={(e) => onSearchChange(e.target.value)}
+            />
+          )}
         </div>
         {!isAdmin && (
           <button className="lg:hidden relative h-fit">
