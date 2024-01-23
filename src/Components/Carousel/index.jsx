@@ -20,6 +20,8 @@ export function CardCarousel({ children }) {
         setOverflowDetected(true);
       else setOverflowDetected(false);
     };
+    handleResize();
+
     // Adiciona o evento de redimensionamento ao carregar o componente
     window.addEventListener("resize", handleResize);
 
