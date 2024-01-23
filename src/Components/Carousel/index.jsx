@@ -9,16 +9,25 @@ export function CardCarousel({ children }) {
 
   function handleScroll(direction) {
     const container = containerRef.current;
-    console.log(container);
     if (direction === "left") container.scrollLeft -= 250;
     else if (direction === "right") container.scrollLeft += 250;
   }
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (container.scrollWidth > container.clientWidth)
-      setOverflowDetected(true);
-  }, [containerRef]);
+    const handleResize = () => {
+      const container = containerRef.current;
+      if (container.scrollWidth > container.clientWidth)
+        setOverflowDetected(true);
+      else setOverflowDetected(false);
+    };
+    // Adiciona o evento de redimensionamento ao carregar o componente
+    window.addEventListener("resize", handleResize);
+
+    // Remove o evento ao desmontar o componente
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="relative">
