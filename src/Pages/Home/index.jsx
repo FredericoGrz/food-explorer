@@ -46,7 +46,7 @@ function Home() {
   }, [search, categories]);
 
   return (
-    <div className="min-w-full min-h-screen bg-dark-400">
+    <div className="min-w-full min-h-screen bg-dark-400 relative">
       <Header onSearchChange={(value) => setSearch(value)} />
       <div className="py-11 pl-8 pr-4 lg:py-24 lg:px-32 flex flex-col gap-16">
         <div
@@ -96,7 +96,9 @@ function Home() {
             ))}
         </div>
       </div>
-      <Footer />
+      <div className="absolute bottom-0 w-full">
+        <Footer />
+      </div>
     </div>
   );
 }
