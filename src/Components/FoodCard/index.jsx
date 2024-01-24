@@ -1,7 +1,7 @@
-import { FaRegHeart } from "react-icons/fa";
 import { MdModeEdit } from "react-icons/md";
 import { Counter } from "../Counter";
 import { Image } from "../Image";
+import { Favorite } from "../Favorite";
 import { useAuth } from "../../hooks/auth";
 import Proptypes from "prop-types";
 import { useNavigate } from "react-router-dom";
@@ -15,32 +15,33 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
     preco = Number(preco).toFixed(2).toString().replace(".", ",");
   }
 
-  function handleCardClick() {
+  function handleNameClick() {
     navigate(`/pratodetalhes/${id}`);
   }
 
-  function handleEditClick(e) {
-    e.stopPropagation();
+  function handleEditClick() {
     navigate(`/prato/${id}`);
   }
 
   return (
-    <button
-      onClick={handleCardClick}
-      className="w-[208px] min-w-[208px] lg:w-[288px] lg:min-w-[288px] h-72 lg:h-[440px] p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col flex-nowrap gap-3 justify-center items-center"
-    >
+    <div className="w-[208px] min-w-[208px] lg:w-[288px] lg:min-w-[288px] h-72 lg:h-[440px] p-6 bg-dark-200 border border-dark-300 rounded-lg relative flex flex-col flex-nowrap gap-3 justify-center items-center">
       {isAdmin ? (
         <button onClick={handleEditClick}>
           <MdModeEdit className="text-white text-2xl lg:text-3xl absolute top-4 right-4 cursor-pointer z-30 hover:scale-150 transition-transform" />
         </button>
       ) : (
-        <FaRegHeart className="text-white text-2xl lg:text-3xl absolute top-4 right-4 cursor-pointer z-30 hover:scale-150 transition-transform" />
+        <Favorite prato_id={Number(id)} />
       )}
 
       <div className="w-24 lg:w-44 h-24 lg:h-44">
         <Image imgUrl={img} />
       </div>
-      <p className="text-white font-semibold lg:text-xl xl:text-2xl">{nome}</p>
+      <button
+        onClick={handleNameClick}
+        className="text-white font-semibold lg:text-xl xl:text-2xl"
+      >
+        {nome}
+      </button>
 
       <p className="hidden lg:line-clamp-1 lg:h-4 xl:line-clamp-2 xl:h-8 text-xs text-light-400 text-center">
         {descricao}
@@ -55,7 +56,7 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
           </button>
         </div>
       )}
-    </button>
+    </div>
   );
 }
 
