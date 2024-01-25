@@ -5,7 +5,7 @@ export function ButtonBack() {
   const navigate = useNavigate();
 
   function handleButtonBack() {
-    navigate(-1);
+    navigate("/");
   }
   return (
     <button
