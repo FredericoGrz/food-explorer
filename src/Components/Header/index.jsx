@@ -21,7 +21,7 @@ export function Header({ onSearchChange }) {
 
   return (
     <header className="w-full h-[114px] px-12 py-6 bg-dark-600">
-      <div className="flex justify-between items-center h-full">
+      <div className="flex justify-between items-center h-full ">
         <Link
           to="/menu"
           className="lg:hidden"
@@ -46,7 +46,7 @@ export function Header({ onSearchChange }) {
             )}
           </div>
         </div>
-        <div className="hidden lg:block w-1/2">
+        <div className="hidden lg:block w-2/5">
           {isHome && (
             <Input
               icon={IoSearch}
@@ -55,36 +55,46 @@ export function Header({ onSearchChange }) {
             />
           )}
         </div>
-        {!isAdmin && (
-          <button className="lg:hidden relative h-fit">
-            <PiReceiptLight className="text-white text-xl" />
-            <div className="w-4 h-4 lg:w-5 lg:h-5 rounded-full bg-tomato-200 absolute -top-1 -right-1 flex justify-center items-center">
-              <p className="text-white text-xs lg:text-sm font-semibold">0</p>
-            </div>
-          </button>
-        )}
-        {!isAdmin && (
-          <button className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24">
-            <PiReceiptLight className="text-white text-2xl" />
-            <p className="text-white text-sm">Pedidos (0)</p>
-          </button>
-        )}
-        {isAdmin && isHome && (
-          <Link
-            to="/categoria"
-            className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
-          >
-            Nova Categoria
-          </Link>
-        )}
-        {isAdmin && isHome && (
-          <Link
-            to="/prato"
-            className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
-          >
-            Novo Prato
-          </Link>
-        )}
+        <div className="flex gap-10 w-fit lg:w-1/4 items-center">
+          {!isAdmin && (
+            <button className="lg:hidden relative h-fit">
+              <PiReceiptLight className="text-white text-xl" />
+              <div className="w-4 h-4 lg:w-5 lg:h-5 rounded-full bg-tomato-200 absolute -top-1 -right-1 flex justify-center items-center">
+                <p className="text-white text-xs lg:text-sm font-semibold">0</p>
+              </div>
+            </button>
+          )}
+          {!isAdmin && (
+            <Link
+              to="/favoritos"
+              className="hidden lg:block text-light-300"
+            >
+              Meus Favoritos
+            </Link>
+          )}
+          {!isAdmin && (
+            <button className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md">
+              <PiReceiptLight className="text-white text-2xl" />
+              <p className="text-white text-sm">Pedidos (0)</p>
+            </button>
+          )}
+          {isAdmin && isHome && (
+            <Link
+              to="/categoria"
+              className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
+            >
+              Nova Categoria
+            </Link>
+          )}
+          {isAdmin && isHome && (
+            <Link
+              to="/prato"
+              className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
+            >
+              Novo Prato
+            </Link>
+          )}
+        </div>
         <button
           className="hidden lg:flex"
           onClick={handleSignOut}

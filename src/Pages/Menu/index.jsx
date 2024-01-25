@@ -26,26 +26,13 @@ function Menu() {
         </div>
       </header>
       <div className="flex-1 px-7 pt-9 flex flex-col gap-9">
-        <div className="flex flex-col gap-3">
-          {isAdmin && (
-            <Link
-              to="/categoria"
-              className="text-light-300 text-2xl"
-            >
-              Nova Categoria
-            </Link>
-          )}
-          {isAdmin && (
-            <Link
-              to="/prato"
-              className="text-light-300 text-2xl"
-            >
-              Novo Prato
-            </Link>
-          )}
+        <div className="flex flex-col gap-3 text-light-300 text-2xl">
+          {isAdmin && <Link to="/categoria">Nova Categoria</Link>}
+          {isAdmin && <Link to="/prato">Novo Prato</Link>}
+          {!isAdmin && <Link to="/favoritos">Meus Favoritos</Link>}
           <button
+            className="w-fit"
             onClick={handleSignOut}
-            className="text-light-300 w-fit text-2xl"
           >
             Sair
           </button>
