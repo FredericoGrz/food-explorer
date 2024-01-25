@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Prato from "../Pages/Prato/Prato";
 import PratoDetalhes from "../Pages/Prato/PratoDetalhes";
 import Categoria from "../Pages/Categoria";
+import Favoritos from "../Pages/Favoritos";
 import Menu from "../Pages/Menu";
 
 export function AppRoutes() {
@@ -32,6 +33,10 @@ export function AppRoutes() {
       <Route
         path="/categoria"
         element={<Categoria />}
+      />
+      <Route
+        path="/favoritos"
+        element={<Favoritos />}
       />
     </Routes>
   );
