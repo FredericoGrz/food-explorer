@@ -4,12 +4,15 @@ import { AuthProvider } from "./hooks/auth";
 import { Routes } from "./routes";
 import "./index.css";
 import { AlertBoxProvider } from "./hooks/AlertBox";
+import { PedidoProvider } from "./hooks/Pedido";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AlertBoxProvider>
       <AuthProvider>
-        <Routes />
+        <PedidoProvider>
+          <Routes />
+        </PedidoProvider>
       </AuthProvider>
     </AlertBoxProvider>
   </React.StrictMode>
