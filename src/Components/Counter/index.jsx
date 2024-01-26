@@ -1,7 +1,8 @@
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Proptypes from "prop-types";
 
-export function Counter() {
+export function Counter({ onChange }) {
   const [number, setNumber] = useState(1);
 
   function decreaseNumber() {
@@ -11,6 +12,10 @@ export function Counter() {
   function increaseNumber() {
     setNumber((prevState) => ++prevState);
   }
+
+  useEffect(() => {
+    if (onChange) onChange(number);
+  }, [number]);
 
   return (
     <div className="flex gap-3 items-center">
@@ -24,3 +29,7 @@ export function Counter() {
     </div>
   );
 }
+
+Counter.propTypes = {
+  onChange: Proptypes.func,
+};
