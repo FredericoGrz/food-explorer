@@ -5,11 +5,16 @@ import { Favorite } from "../Favorite";
 import { useAuth } from "../../hooks/auth";
 import Proptypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { usePedido } from "../../hooks/Pedido";
 
 export function FoodCard({ id, img, nome, descricao, preco }) {
   const { user } = useAuth();
   const isAdmin = user.isAdmin;
   const navigate = useNavigate();
+  const { adicionarPrato } = usePedido();
+
+  const [quantidade, setQuantidade] = useState(1);
 
   if (preco !== undefined) {
     preco = Number(preco).toFixed(2).toString().replace(".", ",");
@@ -21,6 +26,10 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
 
   function handleEditClick() {
     navigate(`/prato/${id}`);
+  }
+
+  function handleIncluir() {
+    adicionarPrato({ id, quantidade });
   }
 
   return (
@@ -50,8 +59,11 @@ export function FoodCard({ id, img, nome, descricao, preco }) {
       <p className="text-cake-200 text-lg lg:text-xl ">{`R$ ${preco}`}</p>
       {!isAdmin && (
         <div className="w-full flex flex-col lg:flex-row lg:mt-2 gap-4 justify-center items-center z-40">
-          <Counter />
-          <button className="text-white font-semibold w-full px-6 py-2 bg-tomato-100 rounded hover:bg-tomato-200">
+          <Counter onChange={(qtt) => setQuantidade(qtt)} />
+          <button
+            onClick={handleIncluir}
+            className="text-white font-semibold w-full px-6 py-2 bg-tomato-100 rounded hover:bg-tomato-200"
+          >
             Incluir
           </button>
         </div>
