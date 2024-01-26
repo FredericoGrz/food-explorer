@@ -6,6 +6,7 @@ import icon from "../../assets/icon.svg";
 import { Input } from "../Input";
 import { useAuth } from "../../hooks/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { usePedido } from "../../hooks/Pedido";
 
 export function Header({ onSearchChange }) {
   const location = useLocation();
@@ -13,6 +14,7 @@ export function Header({ onSearchChange }) {
   const isHome = location.pathname === "/";
   const { signOut, user } = useAuth();
   const isAdmin = Boolean(user.isAdmin);
+  const { pedidoQtdd } = usePedido();
 
   function handleSignOut() {
     signOut();
@@ -60,7 +62,9 @@ export function Header({ onSearchChange }) {
             <button className="lg:hidden relative h-fit">
               <PiReceiptLight className="text-white text-xl" />
               <div className="w-4 h-4 lg:w-5 lg:h-5 rounded-full bg-tomato-200 absolute -top-1 -right-1 flex justify-center items-center">
-                <p className="text-white text-xs lg:text-sm font-semibold">0</p>
+                <p className="text-white text-xs lg:text-sm font-semibold">
+                  {pedidoQtdd}
+                </p>
               </div>
             </button>
           )}
@@ -75,7 +79,7 @@ export function Header({ onSearchChange }) {
           {!isAdmin && (
             <button className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md">
               <PiReceiptLight className="text-white text-2xl" />
-              <p className="text-white text-sm">Pedidos (0)</p>
+              <p className="text-white text-sm">Pedidos ({pedidoQtdd})</p>
             </button>
           )}
           {isAdmin && isHome && (
