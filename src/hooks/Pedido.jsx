@@ -31,6 +31,21 @@ function PedidoProvider({ children }) {
     }
   }
 
+  async function finalizarPedido() {
+    try {
+      localStorage.removeItem("@foodexplorer:pedido_id");
+      localStorage.removeItem("@foodexplorer:pedido_qtdd");
+      setPedido({});
+      setPedidoQtdd(0);
+    } catch (error) {
+      console.log(error);
+      showAlertBox({
+        message: "Erro ao finalizar pedido",
+        type: "warning",
+      });
+    }
+  }
+
   async function adicionarPrato(prato) {
     try {
       const pedido_id = pedido.id || (await criarPedido());
@@ -57,6 +72,29 @@ function PedidoProvider({ children }) {
     }
   }
 
+  async function removerPrato(prato_id) {
+    try {
+      const pedido_id = pedido.id;
+
+      const response = await api.put("pedidopratos", {
+        pedido_id,
+        prato_id,
+      });
+
+      if (response.status === 200) {
+        showAlertBox({
+          message: "Prato removido do pedido",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      showAlertBox({
+        message: "Erro ao remover o prato do pedido",
+        type: "warning",
+      });
+    }
+  }
+
   useEffect(() => {
     const id = localStorage.getItem("@foodexplorer:pedido_id");
     const qtdd = Number(localStorage.getItem("@foodexplorer:pedido_qtdd"));
@@ -70,7 +108,15 @@ function PedidoProvider({ children }) {
   }, []);
 
   return (
-    <PedidoContext.Provider value={{ adicionarPrato, pedidoQtdd }}>
+    <PedidoContext.Provider
+      value={{
+        adicionarPrato,
+        removerPrato,
+        finalizarPedido,
+        pedido,
+        pedidoQtdd,
+      }}
+    >
       {children}
     </PedidoContext.Provider>
   );
