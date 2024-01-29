@@ -5,6 +5,7 @@ import Prato from "../Pages/Prato/Prato";
 import PratoDetalhes from "../Pages/Prato/PratoDetalhes";
 import Categoria from "../Pages/Categoria";
 import Favoritos from "../Pages/Favoritos";
+import Pedidos from "../Pages/Pedidos";
 import Menu from "../Pages/Menu";
 
 export function AppRoutes() {
@@ -37,6 +38,10 @@ export function AppRoutes() {
       <Route
         path="/favoritos"
         element={<Favoritos />}
+      />
+      <Route
+        path="/pedidos"
+        element={<Pedidos />}
       />
     </Routes>
   );

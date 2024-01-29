@@ -59,7 +59,10 @@ export function Header({ onSearchChange }) {
         </div>
         <div className="flex gap-10 w-fit lg:w-1/4 items-center">
           {!isAdmin && (
-            <button className="lg:hidden relative h-fit">
+            <button
+              onClick={() => navigate("/pedidos")}
+              className="lg:hidden relative h-fit"
+            >
               <PiReceiptLight className="text-white text-xl" />
               <div className="w-4 h-4 lg:w-5 lg:h-5 rounded-full bg-tomato-200 absolute -top-1 -right-1 flex justify-center items-center">
                 <p className="text-white text-xs lg:text-sm font-semibold">
@@ -77,7 +80,10 @@ export function Header({ onSearchChange }) {
             </Link>
           )}
           {!isAdmin && (
-            <button className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md">
+            <button
+              onClick={() => navigate("/pedidos")}
+              className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md"
+            >
               <PiReceiptLight className="text-white text-2xl" />
               <p className="text-white text-sm">Pedidos ({pedidoQtdd})</p>
             </button>
