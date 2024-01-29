@@ -26,6 +26,8 @@ function AuthProvider({ children }) {
   function signOut() {
     localStorage.removeItem("@foodexplorer:token");
     localStorage.removeItem("@foodexplorer:user");
+    localStorage.removeItem("@foodexplorer:pedido_id");
+    localStorage.removeItem("@foodexplorer:pedido_qtdd");
 
     setData({});
   }
