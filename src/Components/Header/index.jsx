@@ -91,7 +91,7 @@ export function Header({ onSearchChange }) {
           {isAdmin && isHome && (
             <Link
               to="/categoria"
-              className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
+              className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md  text-white text-md"
             >
               Nova Categoria
             </Link>
@@ -99,7 +99,7 @@ export function Header({ onSearchChange }) {
           {isAdmin && isHome && (
             <Link
               to="/prato"
-              className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md xl:-ml-24 text-white text-md"
+              className="hidden lg:flex h-fit items-center gap-2 bg-tomato-200 py-3 px-8 rounded-md text-white text-md"
             >
               Novo Prato
             </Link>
